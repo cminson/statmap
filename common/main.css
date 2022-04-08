@@ -1,0 +1,155 @@
+body {
+    background-color: white;
+    font-family: "Helvetica";
+    font-size: 15px;
+    text-align: center;
+    margin: auto;
+    text-align: center;
+}
+
+
+table.summary {
+    font-size: 20px;
+    font-weight: bold;
+    border-spacing: 10px;
+    border-collapse: separate;
+    display: inline-block;
+}
+
+table.updown {
+    font-size: 12px; 
+    font-weight: normal; 
+    display: inline-block;
+}
+
+span.header {
+    font-size: 20px;
+    font-weight: bold;
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+
+span.data {
+    font-size: 20px;
+    font-weight: bold;
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+
+div.status {
+    margin-top: 20px;
+    margin-bottom: 10px;
+display: inline-block;
+}
+
+div.rankings {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+td {
+    text-align: right
+
+}
+
+#ID_DATE {
+    font-size: 18px;
+
+}
+
+a:link { color: black; }
+a:visited { color: black; }
+
+#ID_US_MAP {
+   margin-left:auto;
+   margin-right:auto;
+   display:block;
+}
+
+#ID_LOCAL_MAP {
+   margin-left:auto;
+   margin-right:auto;
+   display:block;
+}
+
+.jssocials-share-reddit .jssocials-share-link {
+  background: #64a4ff; }
+  .jssocials-share-reddit .jssocials-share-link:hover {
+    background: #4585ee; }
+
+* { box-sizing: border-box; }
+body {
+  font: 16px Arial;
+  text-align: center;
+}
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+
+.video-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.video-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}

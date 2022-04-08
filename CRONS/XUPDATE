@@ -1,0 +1,10 @@
+rm /var/www/statmap/httpdocs/data/tmp/*
+cd /var/www/covid-19-data; 
+git pull
+cd /var/www/statmap/httpdocs/bin
+./import.py
+./localchart.py
+./heatmap.py
+./toprank.py
+#./rankedstates.py
+#./rankedstates.py 50

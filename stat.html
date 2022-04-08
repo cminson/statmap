@@ -1,0 +1,132 @@
+<!DOCTYPE html> <html lang="en"> 
+<!--
+    Author: Christopher Minson
+    www.christopherminson.com
+
+    All Rights Reserved
+-->
+
+
+<head>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86095707-3', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+
+<title>Coronavirus USA Status Map</title>
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="./social/jssocials.css" />
+<link rel="stylesheet" type="text/css" href="./social/jssocials-theme-flat.css" />
+<link href="./common/main.css"  type="text/css" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="./social/jssocials.min.js"></script>
+<script src="./common/main.js"></script>
+</head>
+
+
+<body onload=init()>
+<p>
+
+
+<?php
+$date_time = date('F jS,  H:i:s');
+print("As of $date_time (PST)");
+
+$NOCACHE = "?v=".time();
+$PATH_MAP = "./data/maps/heatmap.png$NOCACHE";
+$PATH_HOTZONE_MAP = "./data/maps/hotzone.png$NOCACHE";
+$PATH_MOVIE="./data/movies/movie.mp4$NOCACHE";
+$PATH_MOVIE_HOTZONES="./data/movies/hotzones.mp4$NOCACHE";
+$PATH_TOP20STATES_MOVIE="./data/movies/ranked20movie.mp4$NOCACHE";
+$PATH_CHART1 = "./data/charts/chart1.png$NOCACHE";
+$PATH_CHART2 = "./data/charts/chart2.png$NOCACHE";
+$PATH_CHART3 = "./data/charts/chart3.png$NOCACHE";
+$PATH_CHART4 = "./data/charts/chart4.png$NOCACHE";
+$PATH_CHART5 = "./data/charts/chart5.png$NOCACHE";
+$PATH_CHART6 = "./data/charts/chart6.png$NOCACHE";
+$PATH_CHART7 = "./data/charts/chart7.png$NOCACHE";
+$PATH_CHART8 = "./data/charts/chart8.png$NOCACHE";
+$PATH_CHART9 = "./data/charts/chart9.png$NOCACHE";
+$PATH_CHART10 = "./data/charts/chart10.png$NOCACHE";
+
+$MAX_RANK_COUNT = 10
+?>
+</span>
+
+<!-- US WORLD SUMMARY -->
+<hr>
+<div class="status">
+<table class="summary">
+<tr>
+<th></th>
+<th>Cases</th>
+<th>Deaths</th>
+<th>Rate</th>
+</tr>
+
+<?php
+//var_dump($json_a);
+$string = file_get_contents("/var/www/statmap/data/active/API.WORLD.json");
+$json_a = json_decode($string, true);
+$us_date = $json_a["usdate"];
+$stats = $json_a["stats"];
+
+$us_stats = $stats[0];
+$world_stats = $stats[1];
+$us_cases = $us_stats["cases"];
+$us_deaths = $us_stats["deaths"];
+$world_cases = $world_stats["cases"];
+$world_deaths = $world_stats["deaths"];
+$us_rate = round(($us_deaths / $us_cases) * 100, 2);
+$world_rate = round(($world_deaths / $world_cases) * 100, 2);
+
+$us_cases = number_format($us_cases);
+$us_deaths = number_format($us_deaths);
+$world_cases = number_format($world_cases);
+$world_deaths = number_format($world_deaths);
+$us_rate = number_format($us_rate, 2);
+$world_rate = number_format($world_rate, 2);
+
+print("<tr>\n");
+print("<td>U.S.</td>\n");
+print("<td>$us_cases</td>\n");
+print("<td>$us_deaths</td>\n");
+print("<td>$us_rate%</td>\n");
+print("</tr>\n");
+print("<tr>\n");
+print("<td>World</td>\n");
+print("<td>$world_cases</td>\n");
+print("<td>$world_deaths</td>\n");
+print("<td>$world_rate%</td>\n");
+print("</tr>\n");
+?>
+</table>
+</div>
+<br>
+<!-- END SUMMARY -->
+
+
+
+    
+
+
+</body>
+</html>

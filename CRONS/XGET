@@ -1,0 +1,3 @@
+rm /var/www/statmap/data/tmp/*
+cd /var/www/covid-19-data; 
+git pull

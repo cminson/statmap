@@ -1,0 +1,197 @@
+<!DOCTYPE html> <html lang="en"> 
+<!--
+    Author: Christopher Minson
+    www.christopherminson.com
+
+    All Rights Reserved
+-->
+
+<head>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86095707-3', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+
+<title>States Ranked by COVID-19 Death Rate Change</title>
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="./social/jssocials.css" />
+<link rel="stylesheet" type="text/css" href="./social/jssocials-theme-flat.css" />
+<link href="./common/main.css"  type="text/css" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="./social/jssocials.min.js"></script>
+<script>
+const URL_DELTA_STATES = "https://www.statmap.org/deltastates.html";
+
+
+function getFormattedDate() {
+    var date = new Date();
+    var str =  (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+    return str;
+}
+
+function init() {
+
+       $.extend(jsSocials.shares, {
+    reddit: {
+            label: "Reddit",
+            logo: "fa fa-reddit",
+            shareUrl: "https://www.reddit.com/submit?url={url}",
+            countUrl: ""
+        }
+    });
+
+    $("#SHARE_ID_DELTA_STATES").jsSocials({
+            url : URL_DELTA_STATES,
+            text : "U.S. States COVID-19 7-Day Death Rate Per Capita " + getFormattedDate(),
+            shares: ["twitter", "facebook", "reddit"],
+                smallScreenWidth: 140,
+                largeScreenWidth: 324
+    });
+}
+
+
+</script>
+</head>
+
+
+<body onload=init()>
+<a href="https://www.statmap.org">Statmap Home</a>
+<p>
+
+<h1> U.S. Pandemic Tracker</h1>
+<?php
+$date_time = date('F jS,  H:i:s');
+print("<span id=\"ID_DATE\">As of $date_time (PST)</span>");
+?>
+
+
+
+<!-- RANKED STATES  -->
+<hr>
+<div class="status">
+<span class="header">
+Hot Zones: State Rankings
+
+<br>
+(7-Day Deaths Per 100,000)
+</span>
+<p>
+<table class="updown">
+<tr>
+    <td><img src="./images/small_arrow_red.png"></td>
+    <td style="text-align: left">death rate accelerating from previous week</td>
+</tr>
+<tr>
+    <td><img src="./images/small_arrow_green.png"></td>
+    <td style="text-align: left">death rate stable/decelerating from previous week</td>
+</tr>
+</table>
+<p>
+
+
+<table class="summary">
+
+<?php
+
+    $string = file_get_contents("/var/www/statmap/httpdocs/data/active/API.TOPRANKED.json");
+    $json_a = json_decode($string, true);
+    $records = $json_a["top_state_deltas"];
+    $last_record = $records[count($records)-1];
+    $count = 0;
+    foreach ($records as $record) {
+
+           $count += 1;
+           if ($count > 51)
+           {
+                $record = $records[count($records)-1];
+                $rate = $record["rate"];
+                $prev_rate = $record["prev_rate"];
+                $rate = number_format($rate, 2);
+
+                print("<tr>\n");
+                print("<td>&nbsp;</td>\n");
+                print("<td>$rate</td>\n");
+                print("<td>U.S. Average</td>\n");
+
+                if ($rate > $prev_rate) {
+                print("<td><img src=\"./images/small_arrow_red.png\"></td>\n");
+                }
+                else {
+                    print("<td><img src=\"./images/small_arrow_green.png\"></td>\n");
+                }
+
+                print("</tr>\n");
+                break;
+            }
+           print("<tr>\n");
+           $state_name = $record["state_name"];
+           $rate = $record["rate"];
+           $rate = number_format($rate, 2);
+
+           $prev_rate = $record["prev_rate"];
+           $prev_rate = $record["prev_rate"];
+           $prev_ratio = number_format($prev_rate, 2);
+
+           $num= strval($count).")";
+           print("<td>$num</td>\n");
+           print("<td>$rate</td>\n");
+
+
+
+           $locale = str_replace(" ", "_", $state_name);
+           $link = "<a href=\"https://www.statmap.org?LOCALE=$locale#data\">$state_name</a>";
+           print("<td>$link</td>\n");
+
+           if ($rate > $prev_rate) {
+                print("<td><img src=\"./images/small_arrow_red.png\"></td>\n");
+           }
+           else {
+                print("<td><img src=\"./images/small_arrow_green.png\"></td>\n");
+           }
+           print("</tr>\n");
+    }
+
+    ?>
+</table>
+</div>
+
+<div id="SHARE_ID_DELTA_STATES"></div>
+</div>
+
+
+    
+
+<p><br><p>
+<hr>
+
+<p><br>
+<div style="font-size: 10px; text-align:left; margin-left:20px; margin-right: 20px">
+Data Sources:
+<a target="blank" href="https://www.cdc.gov/coronavirus/2019-ncov/index.html">CDC</a>
+<a target="blank" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports">WHO</a>
+<a target="blank" href="https://ncov.dxy.cn/ncovh5/view/pneumonia?scene=2&clicktime=1579582238&enterid=1579582238&from=singlemessage&isappinstalled=0">DXY</a>
+<p>
+This website is provided as a public non-commercial service. 
+Not all data sources may be accurate or consistent. 
+<p>
+<p> &#169; 2020  <a target="_blank" href="https://www.linkedin.com/in/christopher-minson-8640421/">Christopher Minson LLC</a>
+</div>
+    
+
+
+</body>
+</html>

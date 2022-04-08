@@ -1,0 +1,2 @@
+cp ./data/json/stats.json ./data
+cp ./data/test.json ./data/json/stats.json 

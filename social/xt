@@ -1,0 +1,1 @@
+scp -i /home/ubuntu/Keys/kakapo.pem * ubuntu@christopherminson.com:/var/www/statmap/social

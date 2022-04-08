@@ -1,0 +1,335 @@
+<!DOCTYPE html> <html lang="en"> 
+<!--
+    Author: Christopher Minson
+    www.christopherminson.com
+
+    All Rights Reserved
+-->
+
+<head>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86095707-3', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+
+<title>Coronavirus Status Archive</title>
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="./social/jssocials.css" />
+<link rel="stylesheet" type="text/css" href="./social/jssocials-theme-flat.css" />
+<link href="./common/main.css"  type="text/css" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="./social/jssocials.min.js"></script>
+<script>
+const URL_RANKED_STATES = "https://www.statmap.org/rankedstates.html";
+
+
+function getFormattedDate() {
+    var date = new Date();
+    var str =  (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+    return str;
+}
+
+function init() {
+
+       $.extend(jsSocials.shares, {
+    reddit: {
+            label: "Reddit",
+            logo: "fa fa-reddit",
+            shareUrl: "https://www.reddit.com/submit?url={url}",
+            countUrl: ""
+        }
+    });
+
+    $("#SHARE_ID_RANKED_STATES").jsSocials({
+            url : URL_RANKED_STATES,
+            text : "COVID-19 US States Ranked by Per Capita Deaths: 01/21/2020 - " + getFormattedDate(),
+            shares: ["email", "twitter", "facebook", "reddit"],
+                smallScreenWidth: 140,
+                largeScreenWidth: 324
+    });
+}
+
+
+</script>
+</head>
+
+
+<body onload=init()>
+<a href="https://www.statmap.org">Statmap Home</a>
+<p>
+
+<h1> U.S. Pandemic Status Archive</h1>
+<?php
+$date_time = date('F jS,  H:i:s');
+print("<span id=\"ID_DATE\">As of $date_time (PST)</span>");
+?>
+
+
+
+<!-- DATA SUMMARIES -->
+<hr>
+
+
+<br>
+<p>
+<strong>
+    10/13/2020
+</strong>
+<div style="display: inline-block; text-align: justify; margin-left:20px; margin-right: 20px">
+Cases have been trending up over the past two months, moving around regionally.
+Currently the Upper Midwest and parts of the South are suffering the most,  while the West and NorthEast have had a relative respite.
+<p>
+Death rates have remained relatively stable and much lower than at the peak of the pandemic.
+However, increases in deaths normally trail increases in new cases.  Therefore it's expected that the death rate
+will move up again in the coming days.
+<p>
+The Northeast remains the most impacted by the pandemic.  The top four states, by per capita death, are New Jerse
+y, New York, Massachusetts and Connecticut. But other states are moving into the top 10.  In particular, Lousianan, Mississippi and Florida have recently joined the list.
+<p>
+Even mong the hardest-hit states there's a wide disparity in impact.  For example, although Florida is ranked 10th in the U.S. in per capita deaths, it's death rate is still just 40% of (1st place) New Jersey. It will be interesting to see if this changes over the coming winter.
+<p>
+
+
+</div>
+
+
+
+
+
+<br>
+<p>
+<strong>
+    08/31/2020
+</strong>
+<div style="display: inline-block; text-align: justify; margin-left:20px; margin-right: 20px">
+New cases have declined over the past few weeks, while the death rate has remained stable.  Throughout August the U.S. has averaged about 1,000 deaths per day, while cases have fallen below 50,000 per day.
+<p>
+As expected the virus has remained regional, popping up in some areas and declining in others.
+In general, areas that were first hit have done better over time.  This is particularly true
+for the Northeast, which is currently holding new cases and deaths to relatively low rates.  In contrast,
+much of the American south is now
+deep in the throes of the epidemic.  Lousiana and Mississippi are doing particularly poorly and have moved into the top 10 most-affected states.  Texas and Florida are not far behind.
+<p>
+There are two outliers in the West. The worst is Arizona, which has struggled over an extended period and now ranks 9th nationally in per capita deaths.  The other outlier is California, which never fully flattened its curve, particularly in the southern parts of the state. That said, California is currently doing fairly well overall, with a per capita death rate half the U.S. average.
+<p>
+Nationally, 99.3% of all counties have reported local COVID cases.  79.9% of all counties have reported at least one COVID death.  
+
+
+</div>
+
+
+
+<br>
+<p>
+<strong>
+    07/17/2020
+</strong>
+<div style="display: inline-block; text-align: justify; margin-left:20px; margin-right: 20px">
+As feared, death rates have reached a national plateau and are trending higher. From a July 4th low of 526 deaths per day, the 7-day moving average of U.S. deaths has increased 45%.
+<p>
+The Northeast has declined to very low rates, whereas California remains stubbornly high and some southern states have spiked. The worst spikes are currently in Arizona, Texas and Florida, but all southern states are suffering elevated deaths. Nationally, 65% of all U.S. counties have seen at least one COVID-19 death.
+<p>
+In addition, cases have soared nationally.   On July 17th the U.S. cases increased by over 77,000 - a record. Once again, these increases are predominately in the southern states with Florida being one of the hardest hit. These numbers point to increased deaths in the week to come. It's possible that some regions might seen disastrous casualties due to overwhelmed hospital systems.
+<p>
+As expected, the CFR (Case Fatality Rate) continues to decline. It now stands at 3.78%, far from hits high of 5.85% two months ago. This is of course a function of increased testing. Scientists believe the true CFR is probably in the range of 0.5% - 1.2%. Note that if we assume a herd-immunity level of 60%, even a CFR of "merely" 0.5% would result in approximately 950,000 American deaths.
+</div>
+
+
+<br>
+<p>
+<strong>
+    06/17/2020
+</strong>
+<div style="display: inline-block; text-align: justify; margin-left:20px; margin-right: 20px">
+Death rates continue falling across the nation.  Daily fatalities are now at the lowest level in months -  from the April 24th high, the moving 7-day average has fallen over 80%.
+<p>
+The decline in death rates continues to be largely driven from the Northeast. Elsewhere the situation is patchier,
+with some states falling (Washington), some on persistent plateaus (California), and others rising (Arkansas).
+<p>
+The coronavirus has now been confirmed in 96% of US counties.  Deaths have been reported in 60% of all counties.
+<p>
+In contrast, cases continue to rise throughout most of the country. No doubt much of this is due to increased testing. However, it is believed that infection rates are rising as well.  If so, this should reveal itself in an increase death rate over the coming weeks.
+<p>
+Interestingly, the CFR (Case Fatality Rate) has stabilized at around 5.38% for both the US and the World.
+It's expected that this rate will continue to decline from here as testing becomes more prevalent. As of this
+writing,  epidemelogists believe the true CFR may be approximate 0.5%.  If so, that would imply that approximately
+25 million Americans have been infected by the virus.
+<p>
+The <a href=https://www.statmap.org/deltastates.html>Death Rate Change List</a> ranks states by rate of change in deaths over 2-week periods. These numbers tend to jump around a bit, however it is worth noting that southern and Sun Belt states have been among the worst-performing. Arizona, North Carolina, Tennessee are good examples here.
+If this trend continues, we may witness a sharp increase in deaths in these states over the coming months.
+</div>
+
+
+
+<br>
+<p>
+<strong>
+    05/25/2020
+</strong>
+<div style="display: inline-block; text-align: justify; margin-left:20px; margin-right: 20px">
+Death rates continue to decline signficantly. From the April 24th high, the moving 7-day average has fallen over 50%. However most of this decline has been in the Northeast and parts of the West.  Elsewhere date rates have either reached a plateau or continue to rise.  This is particularly true in southern states.
+<p>
+The coronavirus has now been confirmed in 93% of US counties.  Deaths have been reported in 54% of all counties, and 4% have had over 100 deaths.
+<p>
+In terms of per capita deaths, New Jersey has become the worst-affected state. Western and mountain states remain the least affected regions. Mississippi (20.66 deaths per 100k) and Georgia (17.07) are rising in the rankings but still are nowhere near as impacted as the Northeast. For example, New Jersey (124.70) currently has 6X the per capita death rate.
+<p>
+The overall US death rate now stands at 5.88% with 1.69m cases. As previously discussed, this high death rate indicates the presence in the population of many undiagnosed/asymptomatic cases. This observation allows us to do a bit of math.  In particular, if we assume that the actual death rate is 0.6% (a common guestimate), then that would mean that US cases currently exceed 16 million.
+<p>
+We could then use this number to estimate the upper bounds on total deaths by the time the pandemic finishes.
+if we assume that 200m people will eventually get the virus (the minimal level for herd immunity) and then note that 100k people
+have already died in the US, then that would imply a final US death total of around 1.2m (200/16 * 100,000).
+<p>
+Of course, this calculation should be taken with a giant grain of salt. Among other things, it assumes no vaccine, no improvement i
+n treatments, no change in spread (due to warmer weather) and no improvements to public health policies and social behaviors.  Even so, it's an interesting number and demonstrates that the pandemic might end up having a much greater impact over time.
+</div>
+
+
+
+
+<br>
+<p>
+<strong>
+    05/04/2020
+</strong>
+<div style="display: inline-block; text-align: justify; margin-left:20px; margin-right: 20px">
+For the week, aggregate death rates continued to modestly decline. We've had several days that registered barely over 1,000 deaths, a rate that hadn't been seen in previous weeks.. However the data remains noisy with many peaks and valleys.  In addition, it's feared that the reopening of some states will reverse these gains. It will be interesting to see if this is indeed the case.
+<p>
+The overall fatality rate has slowly trended higher to 5.8%, but is losing velocity. New Jersey had a large spike of deaths and is now firmly in the top slot, at 88 deaths per 100,000 people.  Connecticut and New York are competing for the #2 slot. Overall the Northeast, Michigan and Lousiana remain the regional epicenters.
+<p>
+Georgia is worth some discussion here.  This state is currently ranked #11 in per capita deaths, at 11.08. This is somewhat better than the US average of 18.74.  That said, Georgia currently has four counties ranked in the top 10 (Terrel, Early, Mitchell and Dougherty) and its curve has never flattened. Furthermore, Georgia is moving ahead aggressively in reopening. Given all that, Georgia will be a particulary interesting to observe in the months ahead.
+<p>
+</div>
+
+
+
+<br>
+<p>
+<strong>
+    04/28/2020
+</strong>
+<div style="display: inline-block; text-align: justify; margin-left:20px; margin-right: 20px">
+There was a significant decrease in daily fatalities over the previous week, leading to a bend in cumulative deaths curve. That's very good news and may indicate better numbers in the weeks ahead.
+<p>
+89% of all US counties have confirmed COVID-19 cases, up only 2% from the previous week. 44% of all counties reported at least one coronavirus death.  That's up 6% from the previous week. 
+<p>
+The overall fatality rate rose to 5.62%, but appears to have flattened.  This is also very good new. The expectation now is that this rate will begin to fall as more cases are discovered. The high rate of deaths is an anomaly due to the large (but still undetermined) number of unreported or asymptomatic cases. It is now believed that a signficant portion of the US population has been exposed to the virus.  Therefore, as this number is quantified, we can expect the overall intrinsic death rate to fall dramatically.
+<p>
+New York has greatly improved and appears to be flattening. New Jersey however continues rapid growth in cases and deaths, and now is #1 in terms of per capita fatalities. Connecticut is also trending in this direction.  Meanwhile predominately rural states continue to see far less impact from COVID-19. Hawaii remains the best state in this regard, with a rate of 0.99 deaths per 100,000 population.
+
+<p>
+</div>
+
+
+<br>
+<p>
+<strong>
+    04/21/2020
+</strong>
+<div style="display: inline-block; text-align: justify; margin-left:20px; margin-right: 20px">
+87% of all US counties have confirmed COVID-19 cases, up from 84% the previous week. 38% of all counties have at least one COVID-19 death.  
+<p>
+The death rate appears to be flattening at around 5.3% in the United States.  That's an enormous number and over twice the fatality rate of the infamous Spanish Flu.  Presumably that rate will decline as more cases are uncovered, however data remains incomplete and chaotic. The final numbers are anyone's guess. 
+<p>
+New York continues to be the worst per-capita affected state.  However New Jersey is a very close 2nd. In addition, a number of scattered rural counties across the country are also seeing disproportionate fatality rates. This is especially true in Georgia and Lousiana. Navajo areas in Arizona are also seeing heavy per-capita fatality rates.
+<p>
+An anomalous spike of deaths was reported 4/16, giving a final fatality total of over 6,000 for that day (vs an expected ~2,000). That fluke was due to New York state catching up on some previously COVID-19 unreported deaths.    
+<p>
+</div>
+
+
+
+
+
+<br>
+<p>
+<strong>
+    04/12/2020
+</strong>
+<div style="display: inline-block; text-align: justify; margin-left:20px; margin-right: 20px">
+COVID-19 cases grew by 153% over the previous 7 days.  Deaths grew by 269%.  Cases and death growth rates continue to slow. Due to quarantines and social distancing, there is modest but notable curve flattening in some regions.
+<p>
+84% of all US counties have confirmed COVID-19 cases, up from 76% the previous week. 33% of all counties have at least one COVID-19 death.  About 1% of counties have had over 100 deaths.
+<p>
+In the U.S. the death rate has moved up to 4.25% - higher than initially expected. This number is probably skewed 
+due to many undetected cases.  However there are clearly many unreported deaths as well. An overall accurate view of mortality rates is probably a ways off.
+<p>
+The virus continues to disproportionally affect certain regions. New York remains the worst hit state by far, with a fatality rate of 32 per 100,000 people.  However, a number of  poorer counties have rates far exceeding that.  
+<p>
+</div>
+
+
+<br>
+<p>
+<strong>
+    04/05/2020
+</strong>
+<div style="display: inline-block; text-align: justify; margin-left:20px; margin-right: 20px">
+COVID-19 cases grew by 234% over the previous 7 days.  Deaths grew by 383%.  This is somewhat slower growth than over the previous period.
+<p>
+76% of all US counties have confirmed COVID-19 cases, up from 62% the previous week. 23% of all counties have at least one COVID-19 death.
+<p>
+Across the nation, the death rate has inched up to 2.58%. That's slightly above the estimated lethality of the 1918 Spanish Flu.
+However this rate varies wildly across locales. Currently New York, New Jersey and Louisiana have the highest rates.  That said, various locales across the nation are also seeing challenges. 
+<p>
+Meanwhile, the overall cumulative US death rate stands at 2.90 out of 100,000 people.
+<p>
+</div>
+
+<br>
+<p>
+<strong>
+    03/29/2020
+</strong>
+<p>
+
+<div style="display: inline-block; text-align: justify; margin-left:20px; margin-right: 20px">
+For the week, cases grew by 429%.  Deaths increased by 479%. Rates continue to accelerate.
+<p>
+Watch the mortality rate.  For the world, this rate now exceeds 4.8%.  The US death rate has lagged, but now exceeds 2%.  By comparison, influenza mortality in a bad year is typically around 0.2%. The <a target="_blank" href="https://virus.stanford.edu/uda/">"Spanish Flu" of 1918</a>  - which killed over 600k Americans - was at 2.5%. Based on current trends,  it appears that COVID-19 will behave more like the Spanish Flu than a seaonal flu. 
+<p>
+COVID-19 is a novel organism, new to human populations. 
+Therefore,  a very high proportion <a target="_blank" href="https://www.cbsnews.com/news/coronavirus-infection-outbreak-worldwide-virus-expert-warning-today-2020-03-02/">(up to 70%)</a> of the population could ultimately be infected.
+Such an infection rate, combined with the current mortality rate, would lead to higher death totals than currently expected. 
+<p>
+</div>
+
+</div>
+<!-- END DATA SUMMARIES -->
+    
+
+<p><br><p>
+<hr>
+
+<p><br>
+<div style="font-size: 10px; text-align:left; margin-left:20px; margin-right: 20px">
+Data Sources:
+<a target="blank" href="https://www.cdc.gov/coronavirus/2019-ncov/index.html">CDC</a>
+<a target="blank" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports">WHO</a>
+<a target="blank" href="https://ncov.dxy.cn/ncovh5/view/pneumonia?scene=2&clicktime=1579582238&enterid=1579582238&from=singlemessage&isappinstalled=0">DXY</a>
+<p>
+This website is provided as a public non-commercial service. 
+Not all data sources may be accurate or consistent. 
+<p>
+<p> &#169; 2020  <a target="_blank" href="https://www.linkedin.com/in/christopher-minson-8640421/">Christopher Minson LLC</a>
+</div>
+    
+
+
+</body>
+</html>
+
+

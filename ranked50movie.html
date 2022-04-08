@@ -1,0 +1,125 @@
+<!DOCTYPE html> <html lang="en"> 
+<!--
+    Author: Christopher Minson
+    www.christopherminson.com
+
+    All Rights Reserved
+-->
+
+<head>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-86095707-3', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+
+<title>Coronavirus: States Per Capita COVID-19 Deaths</title>
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="./social/jssocials.css" />
+<link rel="stylesheet" type="text/css" href="./social/jssocials-theme-flat.css" />
+<link href="./common/main.css"  type="text/css" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="./social/jssocials.min.js"></script>
+<script>
+const URL_RANKED50HISTORY = "https://www.statmap.org/ranked50movie.html";
+
+function getFormattedDate() {
+    var date = new Date();
+    var str =  (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+    return str;
+}
+
+function init() {
+
+       $.extend(jsSocials.shares, {
+    reddit: {
+            label: "Reddit",
+            logo: "fa fa-reddit",
+            shareUrl: "https://www.reddit.com/submit?url={url}",
+            countUrl: ""
+        }
+    });
+
+    $("#SHARE_ID_TOP50STATES_MOVIE").jsSocials({
+            url : URL_RANKED50HISTORY,
+            text : "COVID-19 US States Ranked by Per Capita Deaths: 01/21/2020 - " + getFormattedDate(),
+            shares: ["email", "twitter", "facebook", "reddit"],
+                smallScreenWidth: 140,
+                largeScreenWidth: 324
+    });
+}
+
+
+</script>
+</head>
+
+
+<body onload=init()>
+<!--
+<div style="position: absolute; left: 5px; top: 5px; font-size: 18px; text-align: left; font-weight: bold">
+<a href="https://www.statmap.org">Statmap Home</a>
+</div>
+-->
+<a href="https://www.statmap.org">Statmap Home</a>
+<?php
+$NOCACHE = "?v=".time();
+
+$PATH_TOP50STATES_MOVIE="./data/movies/ranked50movie.mp4$NOCACHE";
+?>
+<p>
+
+<h1> U.S. Pandemic Tracker 
+</h1>
+
+
+<hr>
+<div class="status">
+<span class="header">
+    U.S. States Ranked <br>(COVID Deaths per 100,000)<br>03/11/20 to Present
+</span>
+<div style="text-align: center; margin-left: 20px; margin-right: 20px">
+<video width="90%" id="ID_TOP50STATES_MOVIE" controls>
+    <source src=<?php print("\"$PATH_TOP50STATES_MOVIE\"")?> type="video/mp4">
+</video>
+</div>
+<p>
+<div id="SHARE_ID_TOP50STATES_MOVIE"></div>
+</div>
+<br>
+
+
+    
+
+<p><br><p>
+<hr>
+
+<p><br>
+<div style="font-size: 10px; text-align:left; margin-left:20px; margin-right: 20px">
+Data Sources:
+<a target="blank" href="https://www.cdc.gov/coronavirus/2019-ncov/index.html">CDC</a>
+<a target="blank" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports">WHO</a>
+<a target="blank" href="https://ncov.dxy.cn/ncovh5/view/pneumonia?scene=2&clicktime=1579582238&enterid=1579582238&from=singlemessage&isappinstalled=0">DXY</a>
+<p>
+This website is provided as a public non-commercial service. 
+Not all data sources may be accurate or consistent. 
+<p>
+<p> &#169; 2020  <a target="_blank" href="https://www.linkedin.com/in/christopher-minson-8640421/">Christopher Minson LLC</a>
+</div>
+    
+
+
+</body>
+</html>
